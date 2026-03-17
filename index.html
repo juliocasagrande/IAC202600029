@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAC202600029 — UHE Garibaldi | Briefing de Projeto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F5F3EF;
+    --bg-alt:    #EDEAE4;
+    --surface:   #FFFFFF;
+    --navy:      #1B2E4B;
+    --navy-mid:  #2C4A72;
+    --blue:      #1E5FA8;
+    --accent:    #1E5FA8;
+    --accent2:   #2A7DC0;
+    --text:      #1B2E4B;
+    --text-mid:  #4A5E78;
+    --text-muted:#8494A8;
+    --border:    rgba(27,46,75,0.10);
+    --border-acc:rgba(30,95,168,0.20);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    overflow-x: hidden;
+    font-weight: 400;
+  }
+
+  /* ══════════ HERO ══════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 2rem;
+    background: var(--navy);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 70px 70px;
+    z-index: 1;
+    animation: gridPan 25s linear infinite;
+  }
+
+  @keyframes gridPan {
+    0%   { background-position: 0 0; }
+    100% { background-position: 70px 70px; }
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 1000px; height: 1000px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,95,168,0.25) 0%, rgba(27,46,75,0.15) 40%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: pulseGlow 5s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.06); }
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 1;
+    animation: float 9s ease-in-out infinite;
+  }
+  .orb1 { width:500px; height:500px; background:rgba(30,95,168,0.12);  top:-150px; left:-150px; animation-delay:0s; }
+  .orb2 { width:350px; height:350px; background:rgba(176,125,58,0.08); bottom:-80px; right:-80px; animation-delay:-4s; }
+  .orb3 { width:280px; height:280px; background:rgba(44,74,114,0.15);  top:35%; right:8%; animation-delay:-6s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-28px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    padding: 7px 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.9s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: #5BB8FF;
+    border-radius: 50%;
+    animation: blink 2s ease infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.25; }
+  }
+
+  .hero-project-id {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.9s 0.15s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.8rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin-bottom: 1.6rem;
+    animation: fadeUp 0.9s 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title .line-accent { color: #5BB8FF; }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.7vw, 1.2rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    animation: fadeUp 0.9s 0.45s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.9s 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: #1E5FA8;
+    color: #FFFFFF;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    padding: 14px 34px;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(30,95,168,0.35);
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover {
+    background: #2A7DC0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(30,95,168,0.45);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    padding: 13px 34px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: border-color 0.2s, background 0.2s;
+    text-transform: uppercase;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 1.1s ease forwards, scrollBob 2.5s 2s ease-in-out infinite;
+    opacity: 0;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  }
+
+  @keyframes scrollBob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══════════ LAYOUT GERAL ══════════ */
+  .section-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .full-alt { background: var(--bg-alt); }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    max-width: 680px;
+    font-weight: 300;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ══════════ TWO-COL ══════════ */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  /* ══════════ CARDS ══════════ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    position: relative;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .card:hover {
+    border-color: var(--border-acc);
+    box-shadow: 0 8px 40px rgba(27,46,75,0.08);
+    transform: translateY(-3px);
+  }
+
+  .card:hover::after { transform: scaleX(1); }
+
+  .card-icon {
+    width: 46px; height: 46px;
+    border-radius: 4px;
+    background: rgba(30,95,168,0.07);
+    border: 1px solid rgba(30,95,168,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.3rem;
+    font-size: 1.35rem;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+  }
+
+  .card-text {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* ══════════ LISTA NUMERADA ══════════ */
+  .num-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .num-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.4rem 1.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .num-item:hover {
+    border-color: var(--border-acc);
+    box-shadow: 0 4px 20px rgba(27,46,75,0.06);
+  }
+
+  .num-badge {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #FFFFFF;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .num-text {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  .num-text strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ══════════ TABELA ══════════ */
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    background: var(--surface);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .items-table thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    padding: 0.95rem 1.3rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .items-table tbody td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 1.3rem;
+    color: var(--text-mid);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .items-table tbody tr:last-child td { border-bottom: none; }
+
+  .items-table tbody tr:hover td {
+    background: rgba(30,95,168,0.03);
+    color: var(--navy);
+  }
+
+  .items-table .group-header td {
+    background: var(--bg-alt);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.65rem 1.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ══════════ QUALIFICAÇÃO ══════════ */
+  .qual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .qual-item {
+    display: flex;
+    gap: 1.1rem;
+    padding: 1.3rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    align-items: flex-start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .qual-item:hover {
+    border-color: var(--border-acc);
+    box-shadow: 0 4px 20px rgba(27,46,75,0.06);
+  }
+
+  .qual-num {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--blue);
+    background: rgba(30,95,168,0.08);
+    border: 1px solid rgba(30,95,168,0.2);
+    border-radius: 3px;
+    padding: 3px 8px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .qual-text {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .qual-text strong { color: var(--navy); font-weight: 600; }
+
+  /* ══════════ TECH BLOCK ══════════ */
+  .tech-block {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 2rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .tech-block .tblock-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .tech-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.88rem;
+    gap: 1rem;
+  }
+
+  .tech-row:last-child { border-bottom: none; }
+
+  .tech-row .tkey {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .tech-row .tval {
+    color: #FFFFFF;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ══════════ INFO HIGHLIGHT ══════════ */
+  .info-highlight {
+    background: rgba(30,95,168,0.06);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 4px 4px 0;
+    padding: 1.2rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  .info-highlight strong { color: var(--navy); }
+
+  /* ══════════ TIMELINE ══════════ */
+  .timeline-section {
+    background: var(--navy);
+    padding: 5rem 2rem;
+  }
+
+  .timeline-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .timeline-inner .section-label {
+    color: rgba(255,255,255,0.45);
+  }
+  .timeline-inner .section-label::before {
+    background: rgba(255,255,255,0.25);
+  }
+  .timeline-inner .section-title {
+    color: #FFFFFF;
+    margin-bottom: 3.5rem;
+  }
+
+  .tl-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tl-track::before {
+    content: '';
+    position: absolute;
+    top: 21px; left: 0; right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .tl-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 2rem;
+    position: relative;
+  }
+
+  .tl-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #5BB8FF;
+    border: 3px solid var(--navy);
+    outline: 2px solid #5BB8FF;
+    margin-bottom: 1.2rem;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .tl-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 0.35rem;
+  }
+
+  .tl-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .tl-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.38);
+    margin-top: 0.4rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  @media (max-width: 700px) {
+    .tl-track { grid-template-columns: 1fr 1fr; gap: 2.5rem 1rem; }
+    .tl-track::before { display: none; }
+  }
+
+  @media (max-width: 420px) {
+    .tl-track { grid-template-columns: 1fr; }
+  }
+
+  /* ══════════ FOOTER ══════════ */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 3.5rem 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.6rem;
+  }
+
+  footer .footer-dates {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  footer .footer-conf {
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    opacity: 0.4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ══════════ REVEAL ══════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="topo">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Briefing para Proponentes
+    </div>
+    <p class="hero-project-id">IAC202600029 · Revisão 0 · Fevereiro de 2026</p>
+    <h1 class="hero-title">
+      Substituição do CLP<br>
+      da <span class="line-accent">SE Remota</span><br>
+      UHE Garibaldi
+    </h1>
+    <p class="hero-subtitle">
+      Subestação Abdon Batista — Modernização do Sistema de Automação<br>
+      Usina Hidrelétrica Garibaldi · CTG Brasil
+    </p>
+    <div class="hero-cta">
+      <a href="#escopo" class="btn-primary">Ver Escopo do Projeto</a>
+      <a href="#habilitacao" class="btn-secondary">Requisitos de Habilitação</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Rolar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ VISÃO GERAL ═══════════════════ -->
+<div class="section-wrap reveal" id="visao-geral">
+  <p class="section-label">Visão Geral do Projeto</p>
+  <div class="two-col">
+    <div>
+      <h2 class="section-title">Modernização do Sistema de Automação da SE Remota</h2>
+      <p class="section-body">
+        Este projeto visa a substituição integral do sistema de automação da Subestação Remota Abdon Batista, pertencente à UHE Garibaldi. O sistema atual utiliza tecnologia obsoleta, baseada no controlador ABB RTU560, com suporte de mercado limitado e crescente dificuldade de obtenção de peças de reposição e serviços especializados.
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        A nova plataforma será o CLP Schneider M580, já adotado como padrão da usina, garantindo uniformidade tecnológica, redução dos custos de manutenção e elevação da confiabilidade operacional da subestação.
+      </p>
+    </div>
+    <div>
+      <div class="tech-block">
+        <div class="tblock-title">Informações Técnicas do Projeto</div>
+        <div class="tech-row">
+          <span class="tkey">Unidade de Negócio</span>
+          <span class="tval">UHE Garibaldi — CTG Brasil</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Local de Execução</span>
+          <span class="tval">SE Abdon Batista</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Sistema Atual</span>
+          <span class="tval">ABB RTU560 (obsoleto)</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Plataforma Destino</span>
+          <span class="tval">Schneider Electric M580</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Modalidade de Licitação</span>
+          <span class="tval">Negociação Competitiva</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Critério de Avaliação</span>
+          <span class="tval">Menor Preço</span>
+        </div>
+        <div class="tech-row">
+          <span class="tkey">Validade da Proposta</span>
+          <span class="tval">90 dias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ JUSTIFICATIVA ═══════════════════ -->
+<div class="full-alt">
+  <div class="section-wrap reveal" id="necessidade">
+    <p class="section-label">Justificativa do Projeto</p>
+    <h2 class="section-title">Por que este projeto é necessário?</h2>
+    <p class="section-body">O sistema de controle de baias existente opera com tecnologia sem suporte adequado de mercado, criando riscos operacionais crescentes e incompatibilidade com a infraestrutura padrão da usina.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Tecnologia Obsoleta</div>
+        <div class="card-text">O controlador ABB RTU560 em operação possui suporte de mercado limitado e crescente dificuldade na obtenção de peças de reposição e serviços técnicos qualificados.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <div class="card-title">Fora do Padrão da Usina</div>
+        <div class="card-text">O sistema atual está em desacordo com o padrão tecnológico da usina (Schneider M580), elevando a complexidade de manutenção, o esforço de engenharia e os custos de ciclo de vida.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Risco Operacional Crescente</div>
+        <div class="card-text">Plataformas em fim de vida útil elevam progressivamente o risco técnico, a probabilidade de desligamentos forçados e os custos de manutenção corretiva.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3.5rem;">
+      <p class="section-label">Impactos da Não Realização</p>
+      <div class="num-list">
+        <div class="num-item">
+          <div class="num-badge" style="background:#9B2C2C; font-size:1.1rem; line-height:1;">!</div>
+          <div class="num-text">Maior risco de desligamentos forçados em razão do envelhecimento dos equipamentos e baixa disponibilidade de componentes de reposição no mercado.</div>
+        </div>
+        <div class="num-item">
+          <div class="num-badge" style="background:#9B2C2C; font-size:1.1rem; line-height:1;">!</div>
+          <div class="num-text">Aumento do risco operacional no controle e supervisão de baias, com impacto direto na confiabilidade das manobras e na capacidade de resposta a situações anormais.</div>
+        </div>
+        <div class="num-item">
+          <div class="num-badge" style="background:#9B2C2C; font-size:1.1rem; line-height:1;">!</div>
+          <div class="num-text">Incremento progressivo dos custos de manutenção e do risco técnico, típicos de plataformas de automação em fim de vida útil.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ ESCOPO ═══════════════════ -->
+<div class="section-wrap reveal" id="escopo">
+  <p class="section-label">Escopo Detalhado</p>
+  <h2 class="section-title">O que a Contratação Contempla</h2>
+  <p class="section-body">A empresa contratada deverá entregar uma solução completa de automação, abrangendo desde o fornecimento de hardware até o comissionamento em campo, treinamento da equipe técnica e documentação de engenharia atualizada.</p>
+
+  <div class="num-list" style="margin-top: 2.5rem;">
+    <div class="num-item">
+      <div class="num-badge">1</div>
+      <div class="num-text"><strong>Fornecimento de hardware, software e componentes de comunicação</strong> — Inclui todos os módulos do novo sistema de automação, licenças de software e a infraestrutura de comunicação necessária para operação plena da SE Abdon Batista.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">2</div>
+      <div class="num-text"><strong>Engenharia, configuração e modernização do sistema</strong> — Desenvolvimento completo da aplicação de automação e supervisão, incluindo interfaces de comunicação e integração com os sistemas existentes da usina. A lógica de controle deverá ser integralmente reescrita na plataforma Schneider M580, utilizando a programação ABB existente apenas como referência funcional — não há possibilidade de migração automática.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">3</div>
+      <div class="num-text"><strong>Testes de Fábrica — FAT (Factory Acceptance Tests)</strong> — Validação integral do sistema em ambiente controlado, antes do transporte ao campo, com presença e aprovação da equipe técnica da CTG Brasil.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">4</div>
+      <div class="num-text"><strong>Desinstalação, instalação e comissionamento em campo</strong> — Desmontagem e remoção dos equipamentos legados, instalação física do novo sistema no painel da SE Abdon Batista, execução dos testes de comissionamento integrado e colocação em operação supervisionada.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">5</div>
+      <div class="num-text"><strong>Elaboração da documentação técnica do projeto</strong> — Documentação de engenharia completa, incluindo diagramas elétricos, esquemas de lógica de controle, arquitetura de comunicação, manuais operacionais e entrega de desenhos "as built" atualizados ao término do comissionamento.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">6</div>
+      <div class="num-text"><strong>Treinamento da equipe técnica</strong> — Capacitação teórica e prática da equipe de operação e manutenção da CTG Brasil para operação cotidiana, diagnóstico de falhas e manutenção preventiva e corretiva do novo sistema instalado.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-badge">7</div>
+      <div class="num-text"><strong>Logística e transporte de materiais</strong> — Mobilização, desmobilização e transporte de todos os materiais e equipamentos necessários até o local de instalação na UHE Garibaldi.</div>
+    </div>
+  </div>
+
+  <div class="info-highlight">
+    <strong>Observação técnica relevante:</strong> diferentemente de projetos anteriores de modernização na UHE Garibaldi — nos quais os CLPs eram Schneider Quantum, viabilizando migração de lógica de forma semi-automática — nesta contratação a lógica de controle deverá ser integralmente reescrita. O esforço de engenharia é significativamente maior e deve ser considerado no dimensionamento da proposta técnica e comercial.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ QUANTIDADES ═══════════════════ -->
+<div class="full-alt">
+  <div class="section-wrap reveal" id="quantidades">
+    <p class="section-label">Lista de Quantidades</p>
+    <h2 class="section-title">Itens Conforme Especificação</h2>
+    <p class="section-body">Relação de itens a serem fornecidos e serviços a serem executados conforme documentos de licitação.</p>
+
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Descrição</th>
+          <th>Unid.</th>
+          <th>Qtd.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="4">Equipamentos e Materiais</td></tr>
+        <tr>
+          <td>1</td>
+          <td>Fornecimento completo do Sistema de Automação do CLP SE Abdon Batista</td>
+          <td>conj.</td>
+          <td>1</td>
+        </tr>
+        <tr class="group-header"><td colspan="4">Peças de Reposição</td></tr>
+        <tr>
+          <td>1</td>
+          <td>Fornecimento de peças de reposição conforme especificação técnica</td>
+          <td>conj.</td>
+          <td>1</td>
+        </tr>
+        <tr class="group-header"><td colspan="4">Serviços</td></tr>
+        <tr>
+          <td>1</td>
+          <td>Mobilização e Desmobilização</td>
+          <td>un.</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Serviços de Engenharia e Projeto</td>
+          <td>un.</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Serviços de Comissionamento e Testes</td>
+          <td>un.</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Serviços de Desmontagem e Montagem</td>
+          <td>un.</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ BENEFÍCIOS ═══════════════════ -->
+<div class="section-wrap reveal" id="beneficios">
+  <p class="section-label">Benefícios Esperados</p>
+  <h2 class="section-title">Resultados com a Execução do Projeto</h2>
+  <p class="section-body">A modernização trará impactos diretos sobre a confiabilidade operacional, a padronização tecnológica e a sustentabilidade de longo prazo da subestação.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🏭</div>
+      <div class="card-title">Plataforma Modernizada e Padronizada</div>
+      <div class="card-text">Migração para plataforma de automação moderna e alinhada ao padrão da usina, garantindo manutenibilidade de longo prazo e redução da complexidade operacional.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Reengenharia da Aplicação de Controle</div>
+      <div class="card-text">Reescrita completa da lógica de controle com melhorias de confiabilidade, eliminação de problemas de legado e otimização das rotinas de supervisão de baias.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <div class="card-title">Documentação Técnica Atualizada</div>
+      <div class="card-text">Entrega de documentação técnica completa e "as built" atualizado, facilitando futuras manutenções, intervenções e auditorias técnicas na subestação.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">Redução do Risco Operacional</div>
+      <div class="card-text">Redução significativa do risco de falhas não programadas, com aumento da disponibilidade do sistema e melhoria do desempenho de resposta em situações de anormalidade.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ HABILITAÇÃO ═══════════════════ -->
+<div class="full-alt">
+  <div class="section-wrap reveal" id="habilitacao">
+    <p class="section-label">Requisitos de Habilitação</p>
+    <h2 class="section-title">Critérios de Elegibilidade</h2>
+    <p class="section-body">As empresas proponentes deverão atender a todos os requisitos abaixo para estarem aptas à apresentação de proposta.</p>
+
+    <div class="qual-grid">
+      <div class="qual-item">
+        <span class="qual-num">01</span>
+        <div class="qual-text"><strong>Regularidade Jurídica</strong> — A empresa deve ser uma pessoa jurídica devidamente registrada e em situação regular perante os órgãos competentes.</div>
+      </div>
+      <div class="qual-item">
+        <span class="qual-num">02</span>
+        <div class="qual-text"><strong>Saúde Financeira</strong> — Ausência de déficit contínuo nos últimos 3 anos ou ausência de conceito (D) de inadimplência no Relatório Serasa.</div>
+      </div>
+      <div class="qual-item">
+        <span class="qual-num">03</span>
+        <div class="qual-text"><strong>Certidões Tributárias</strong> — Comprovação de regularidade fiscal, previdenciária e trabalhista mediante as certidões negativas de débito exigidas.</div>
+      </div>
+      <div class="qual-item">
+        <span class="qual-num">04</span>
+        <div class="qual-text"><strong>Capacidade Técnica</strong> — Demonstração de experiência em projetos de escopo semelhante em subestações de energia elétrica, com pelo menos 1 implementação comprovada ou declaração emitida pelo contratante anterior.</div>
+      </div>
+      <div class="qual-item">
+        <span class="qual-num">05</span>
+        <div class="qual-text"><strong>Qualificação da Equipe</strong> — O responsável técnico pela execução deverá possuir mais de 5 anos de experiência relevante na área e ter liderado com êxito pelo menos 2 projetos similares.</div>
+      </div>
+      <div class="qual-item">
+        <span class="qual-num">06</span>
+        <div class="qual-text"><strong>Vedação a Consórcio</strong> — Não é permitida a apresentação de proposta em forma de consórcio entre duas ou mais pessoas jurídicas.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CRONOGRAMA ═══════════════════ -->
+<div class="timeline-section reveal" id="cronograma">
+  <div class="timeline-inner">
+    <p class="section-label">Cronograma do Processo</p>
+    <h2 class="section-title">Etapas da Concorrência</h2>
+    <div class="tl-track">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Fase 01</div>
+        <div class="tl-date">16 a 20/03</div>
+        <div class="tl-desc">Briefing para Proponentes</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Fase 02</div>
+        <div class="tl-date">16 a 20/03</div>
+        <div class="tl-desc">Visita Técnica ao Local</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Fase 03</div>
+        <div class="tl-date">25/03</div>
+        <div class="tl-desc">Sessão de Perguntas e Respostas (Q&A)</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Fase 04</div>
+        <div class="tl-date">06/04</div>
+        <div class="tl-desc">Prazo Final para Recebimento de Propostas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-logo">CTG Brasil · UHE Garibaldi</div>
+  <p>IAC202600029 — Substituição do CLP da SE Remota (Abdon Batista)</p>
+  <p class="footer-dates">
+    Briefing: 16 a 20/03 &nbsp;·&nbsp; Visita Técnica: 16 a 20/03 &nbsp;·&nbsp; Q&A: 25/03 &nbsp;·&nbsp; Recebimento de Propostas: 06/04
+  </p>
+  <p class="footer-conf">Confidencial — Uso Exclusivo dos Proponentes</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.card-grid .card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.09}s`;
+  });
+  document.querySelectorAll('.qual-grid .qual-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.07}s`;
+  });
+  document.querySelectorAll('.num-list .num-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.06}s`;
+  });
+</script>
+</body>
+</html>
