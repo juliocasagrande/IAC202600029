@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IAC202600029 — UHE Garibaldi | Briefing de Projeto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -329,7 +330,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 2rem;
+    padding: 1.25rem 1.5rem;
     transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
     position: relative;
   }
@@ -362,6 +363,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 1.3rem;
     font-size: 1.35rem;
+    color: var(--blue);
   }
 
   .card-title {
@@ -578,6 +580,132 @@
 
   .info-highlight strong { color: var(--navy); }
 
+  /* ══════════ PROPOSTA ══════════ */
+  .proposta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 860px) {
+    .proposta-grid { grid-template-columns: 1fr; }
+  }
+
+  .proposta-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proposta-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 1.6rem;
+  }
+
+  .proposta-header--tec { background: var(--navy); }
+  .proposta-header--com { background: #163D6B; }
+
+  .proposta-header-icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    flex-shrink: 0;
+  }
+
+  .proposta-header-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.15rem;
+  }
+
+  .proposta-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .proposta-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #FEF3F2;
+    border-bottom: 1px solid #FEE2E2;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.83rem;
+    color: #9B1C1C;
+    line-height: 1.5;
+  }
+
+  .proposta-alert i { margin-top: 2px; flex-shrink: 0; }
+  .proposta-alert strong { font-weight: 700; }
+
+  .proposta-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(30,95,168,0.05);
+    border-bottom: 1px solid rgba(30,95,168,0.12);
+    padding: 0.85rem 1.4rem;
+    font-size: 0.83rem;
+    color: var(--blue);
+    line-height: 1.5;
+  }
+
+  .proposta-info i { margin-top: 2px; flex-shrink: 0; }
+  .proposta-info strong { font-weight: 700; color: var(--navy); }
+
+  .proposta-list {
+    list-style: none;
+    padding: 1rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .proposta-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(27,46,75,0.05);
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+    transition: color 0.15s;
+  }
+
+  .proposta-list li:last-child { border-bottom: none; }
+
+  .proposta-list li:hover { color: var(--navy); }
+
+  .proposta-list li i {
+    color: var(--blue);
+    font-size: 0.55rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .proposta-list em {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.85em;
+  }
+
   /* ══════════ TIMELINE ══════════ */
   .timeline-section {
     background: var(--navy);
@@ -713,6 +841,131 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ══════════ PROPOSTA ══════════ */
+  .proposta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 860px) {
+    .proposta-grid { grid-template-columns: 1fr; }
+  }
+
+  .proposta-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proposta-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 1.6rem;
+  }
+
+  .proposta-header--tec { background: var(--navy); }
+  .proposta-header--com { background: #163D6B; }
+
+  .proposta-header-icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    flex-shrink: 0;
+  }
+
+  .proposta-header-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.15rem;
+  }
+
+  .proposta-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .proposta-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #FEF3F2;
+    border-bottom: 1px solid #FEE2E2;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.83rem;
+    color: #9B1C1C;
+    line-height: 1.5;
+  }
+
+  .proposta-alert i { margin-top: 2px; flex-shrink: 0; }
+  .proposta-alert strong { font-weight: 700; }
+
+  .proposta-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(30,95,168,0.05);
+    border-bottom: 1px solid rgba(30,95,168,0.12);
+    padding: 0.85rem 1.4rem;
+    font-size: 0.83rem;
+    color: var(--blue);
+    line-height: 1.5;
+  }
+
+  .proposta-info i { margin-top: 2px; flex-shrink: 0; }
+  .proposta-info strong { font-weight: 700; color: var(--navy); }
+
+  .proposta-list {
+    list-style: none;
+    padding: 1rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .proposta-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(27,46,75,0.05);
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+    transition: color 0.15s;
+  }
+
+  .proposta-list li:last-child { border-bottom: none; }
+  .proposta-list li:hover { color: var(--navy); }
+
+  .proposta-list li i {
+    color: var(--blue);
+    font-size: 0.5rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.55;
+  }
+
+  .proposta-list em {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.85em;
+  }
 </style>
 </head>
 <body>
@@ -730,10 +983,10 @@
       <span class="dot"></span>
       Briefing para Proponentes
     </div>
-    <p class="hero-project-id">IAC202600029 · Revisão 0 · Fevereiro de 2026</p>
+    <p class="hero-project-id">IAC202600029 · Fevereiro de 2026</p>
     <h1 class="hero-title">
       Substituição do CLP<br>
-      da <span class="line-accent">SE Remota</span><br>
+      da <span class="line-accent">UAC SE Abdon Batista</span><br>
       UHE Garibaldi
     </h1>
     <p class="hero-subtitle">
@@ -757,7 +1010,7 @@
   <p class="section-label">Visão Geral do Projeto</p>
   <div class="two-col">
     <div>
-      <h2 class="section-title">Modernização do Sistema de Automação da SE Remota</h2>
+      <h2 class="section-title">Modernização do Sistema de Automação da Subestação Abdon Batista</h2>
       <p class="section-body">
         Este projeto visa a substituição integral do sistema de automação da Subestação Remota Abdon Batista, pertencente à UHE Garibaldi. O sistema atual utiliza tecnologia obsoleta, baseada no controlador ABB RTU560, com suporte de mercado limitado e crescente dificuldade de obtenção de peças de reposição e serviços especializados.
       </p>
@@ -808,21 +1061,21 @@
   <div class="section-wrap reveal" id="necessidade">
     <p class="section-label">Justificativa do Projeto</p>
     <h2 class="section-title">Por que este projeto é necessário?</h2>
-    <p class="section-body">O sistema de controle de baias existente opera com tecnologia sem suporte adequado de mercado, criando riscos operacionais crescentes e incompatibilidade com a infraestrutura padrão da usina.</p>
+    <p class="section-body">O sistema de controle existente opera com tecnologia sem suporte adequado de mercado, criando riscos operacionais crescentes e incompatibilidade com a infraestrutura padrão da usina.</p>
 
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon">⚠️</div>
+        <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
         <div class="card-title">Tecnologia Obsoleta</div>
         <div class="card-text">O controlador ABB RTU560 em operação possui suporte de mercado limitado e crescente dificuldade na obtenção de peças de reposição e serviços técnicos qualificados.</div>
       </div>
       <div class="card">
-        <div class="card-icon">🔧</div>
+        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
         <div class="card-title">Fora do Padrão da Usina</div>
-        <div class="card-text">O sistema atual está em desacordo com o padrão tecnológico da usina (Schneider M580), elevando a complexidade de manutenção, o esforço de engenharia e os custos de ciclo de vida.</div>
+        <div class="card-text">O sistema atual está em desacordo com o padrão tecnológico da usina (Schneider M580), elevando a complexidade de manutenção, o esforço de engenharia e os custos com sobressalentes.</div>
       </div>
       <div class="card">
-        <div class="card-icon">📊</div>
+        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
         <div class="card-title">Risco Operacional Crescente</div>
         <div class="card-text">Plataformas em fim de vida útil elevam progressivamente o risco técnico, a probabilidade de desligamentos forçados e os custos de manutenção corretiva.</div>
       </div>
@@ -837,7 +1090,7 @@
         </div>
         <div class="num-item">
           <div class="num-badge" style="background:#9B2C2C; font-size:1.1rem; line-height:1;">!</div>
-          <div class="num-text">Aumento do risco operacional no controle e supervisão de baias, com impacto direto na confiabilidade das manobras e na capacidade de resposta a situações anormais.</div>
+          <div class="num-text">Aumento do risco operacional no controle e supervisão dos bays, com impacto direto na confiabilidade das manobras e na capacidade de resposta a situações anormais.</div>
         </div>
         <div class="num-item">
           <div class="num-badge" style="background:#9B2C2C; font-size:1.1rem; line-height:1;">!</div>
@@ -888,7 +1141,7 @@
   </div>
 
   <div class="info-highlight">
-    <strong>Observação técnica relevante:</strong> diferentemente de projetos anteriores de modernização na UHE Garibaldi — nos quais os CLPs eram Schneider Quantum, viabilizando migração de lógica de forma semi-automática — nesta contratação a lógica de controle deverá ser integralmente reescrita. O esforço de engenharia é significativamente maior e deve ser considerado no dimensionamento da proposta técnica e comercial.
+    <strong>Observação técnica relevante:</strong> A lógica de controle atual deverá servir apenas como referência para a reescrita na nova plataforma. Não será possível realizar migração automática ou conversão direta dos programas legados, exigindo desenvolvimento integral da aplicação de controle na plataforma Schneider M580.
   </div>
 </div>
 
@@ -963,24 +1216,24 @@
   <h2 class="section-title">Resultados com a Execução do Projeto</h2>
   <p class="section-body">A modernização trará impactos diretos sobre a confiabilidade operacional, a padronização tecnológica e a sustentabilidade de longo prazo da subestação.</p>
 
-  <div class="card-grid">
+  <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
     <div class="card">
-      <div class="card-icon">🏭</div>
+      <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
       <div class="card-title">Plataforma Modernizada e Padronizada</div>
       <div class="card-text">Migração para plataforma de automação moderna e alinhada ao padrão da usina, garantindo manutenibilidade de longo prazo e redução da complexidade operacional.</div>
     </div>
     <div class="card">
-      <div class="card-icon">⚙️</div>
+      <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
       <div class="card-title">Reengenharia da Aplicação de Controle</div>
-      <div class="card-text">Reescrita completa da lógica de controle com melhorias de confiabilidade, eliminação de problemas de legado e otimização das rotinas de supervisão de baias.</div>
+      <div class="card-text">Reescrita completa da lógica de controle com melhorias de confiabilidade, eliminação de problemas de legado e otimização das rotinas de supervisão dos bays.</div>
     </div>
     <div class="card">
-      <div class="card-icon">📄</div>
+      <div class="card-icon"><i class="fa-solid fa-file-lines"></i></div>
       <div class="card-title">Documentação Técnica Atualizada</div>
       <div class="card-text">Entrega de documentação técnica completa e "as built" atualizado, facilitando futuras manutenções, intervenções e auditorias técnicas na subestação.</div>
     </div>
     <div class="card">
-      <div class="card-icon">🛡️</div>
+      <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
       <div class="card-title">Redução do Risco Operacional</div>
       <div class="card-text">Redução significativa do risco de falhas não programadas, com aumento da disponibilidade do sistema e melhoria do desempenho de resposta em situações de anormalidade.</div>
     </div>
@@ -999,29 +1252,109 @@
     <div class="qual-grid">
       <div class="qual-item">
         <span class="qual-num">01</span>
-        <div class="qual-text"><strong>Regularidade Jurídica</strong> — A empresa deve ser uma pessoa jurídica devidamente registrada e em situação regular perante os órgãos competentes.</div>
+        <div class="qual-text"><strong>Regularidade Jurídica</strong> — A empresa deve ser uma pessoa jurídica devidamente registrada e em situação regular perante os órgãos competentes. Sendo necessária a apresentação do <b>CNPJ</b> e <b>Contrato Social</b>.</div>
       </div>
       <div class="qual-item">
         <span class="qual-num">02</span>
-        <div class="qual-text"><strong>Saúde Financeira</strong> — Ausência de déficit contínuo nos últimos 3 anos ou ausência de conceito (D) de inadimplência no Relatório Serasa.</div>
+        <div class="qual-text"><strong>Saúde Financeira</strong> — Ausência de déficit contínuo nos <b>últimos 3 anos</b> ou ausência de conceito (D) de inadimplência no Relatório Serasa. Com a apresentação do <b>DRE</b> e <b>Balanços Patrimoniais</b>.</div>
       </div>
       <div class="qual-item">
         <span class="qual-num">03</span>
-        <div class="qual-text"><strong>Certidões Tributárias</strong> — Comprovação de regularidade fiscal, previdenciária e trabalhista mediante as certidões negativas de débito exigidas.</div>
+        <div class="qual-text"><strong>Certidões Tributárias</strong> — Comprovação de regularidade fiscal, previdenciária e trabalhista mediante as certidões negativas de débito exigidas, através da apresentação das <b>CNDs</b> (Federal, Municipal, Estadual) e <b>FGTS</b>.</div>
       </div>
       <div class="qual-item">
         <span class="qual-num">04</span>
-        <div class="qual-text"><strong>Capacidade Técnica</strong> — Demonstração de experiência em projetos de escopo semelhante em subestações de energia elétrica, com pelo menos 1 implementação comprovada ou declaração emitida pelo contratante anterior.</div>
+        <div class="qual-text"><strong>Capacidade Técnica</strong> — Demonstração de experiência em projetos de escopo semelhante em <b>subestações de energia elétrica</b>, com <b>pelo menos 1 implementação comprovada</b> ou declaração emitida pelo contratante anterior.</div>
       </div>
       <div class="qual-item">
         <span class="qual-num">05</span>
-        <div class="qual-text"><strong>Qualificação da Equipe</strong> — O responsável técnico pela execução deverá possuir mais de 5 anos de experiência relevante na área e ter liderado com êxito pelo menos 2 projetos similares.</div>
+        <div class="qual-text"><strong>Qualificação da Equipe</strong> — O responsável técnico pela execução deverá possuir <b>mais de 5 anos</b> de experiência relevante na área e ter liderado com êxito <b>pelo menos 2 projetos similares</b>.</div>
       </div>
       <div class="qual-item">
         <span class="qual-num">06</span>
         <div class="qual-text"><strong>Vedação a Consórcio</strong> — Não é permitida a apresentação de proposta em forma de consórcio entre duas ou mais pessoas jurídicas.</div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ COMPOSIÇÃO DA PROPOSTA ═══════════════════ -->
+<div class="section-wrap reveal" id="proposta">
+  <p class="section-label">Composição da Proposta</p>
+  <h2 class="section-title">Documentos Exigidos para Participação</h2>
+  <p class="section-body">A proposta deverá ser apresentada em dois volumes independentes — Proposta Técnica e Proposta Comercial — contendo obrigatoriamente os itens relacionados abaixo.</p>
+
+  <div class="proposta-grid">
+
+    <!-- TÉCNICA -->
+    <div class="proposta-col">
+      <div class="proposta-header proposta-header--tec">
+        <div class="proposta-header-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+        <div>
+          <div class="proposta-header-label">Volume I</div>
+          <div class="proposta-header-title">Proposta Técnica</div>
+        </div>
+      </div>
+      <div class="proposta-alert">
+        <i class="fa-solid fa-ban"></i>
+        <span><strong>A Proposta Técnica obrigatoriamente não deverá conter preços.</strong></span>
+      </div>
+      <ul class="proposta-list">
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Detalhamento do Escopo</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Responsabilidades, garantias e condições</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Prazos de vigência, execução e fornecimento</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Prazos de mobilização e desmobilização <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Turno de trabalho</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Escopo e critério de subcontratação <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Responsabilidade pelo fornecimento de alimentação e transporte da equipe de campo <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Índice de reajuste</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Atendimento de todos os seguros exigidos <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Validade da proposta conforme indicado na carta convite (RFP)</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Dados completos da Proponente: Razão Social, CNPJ, Endereço e Contatos</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Periculosidade <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Cronograma físico</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Frete <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Forma de descarregamento do material (ponte rolante, empilhadeira etc.) <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Declaração de atendimento a todos os itens desta Especificação, exceto os listados em "Lista de Exceções"</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Lista de Exceções com todos os desvios, alternativos e exceções aos documentos desta Especificação</span></li>
+      </ul>
+    </div>
+
+    <!-- COMERCIAL -->
+    <div class="proposta-col">
+      <div class="proposta-header proposta-header--com">
+        <div class="proposta-header-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <div>
+          <div class="proposta-header-label">Volume II</div>
+          <div class="proposta-header-title">Proposta Comercial</div>
+        </div>
+      </div>
+      <div class="proposta-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Condição de Pagamento: <strong>35DDL</strong> — sempre nos dias 05, 10, 15, 20, 25, 30</span>
+      </div>
+      <ul class="proposta-list">
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Impostos inclusos e respectivas alíquotas (ISS, IPI, ICMS, PIS/COFINS, ST)</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>NCM dos materiais/equipamentos a serem fornecidos</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Observações referentes ao DIFAL <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Índice de reajuste</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Prazos de vigência e execução</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Prazos de mobilização e desmobilização <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Responsabilidade pelo fornecimento de alimentação e transporte da equipe de campo <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Atendimento de todos os seguros exigidos <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Turno de trabalho</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Detalhamento de subcontratação <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Validade da proposta conforme indicado na carta convite (RFP)</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Dados completos da Proponente: Razão Social, CNPJ, Endereço e Contatos</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Preenchimento e envio da planilha de quantidade e preços</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Cronograma de pagamento e critério de medição</span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Frete <em>(se aplicável)</em></span></li>
+        <li><i class="fa-solid fa-circle-small fa-2xs"></i><span>Declaração de atendimento a todos os itens desta Especificação, exceto os listados em "Lista de Exceções"</span></li>
+      </ul>
+    </div>
+
   </div>
 </div>
 
@@ -1086,6 +1419,12 @@
   });
   document.querySelectorAll('.num-list .num-item').forEach((el, i) => {
     el.style.transitionDelay = `${i * 0.06}s`;
+  });
+  document.querySelectorAll('.proposta-list li').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.03}s`;
+  });
+  document.querySelectorAll('.proposta-list li').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.03}s`;
   });
 </script>
 </body>
